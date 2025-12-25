@@ -19,6 +19,7 @@ public class Professeur implements Personne {
     public void ajouterClasse(Classe c) {
         classes.add(c);
     }
+
     public void ajouterCours(Cours c) {
         cours.add(c);
     }
@@ -26,24 +27,31 @@ public class Professeur implements Personne {
     public List<Classe> getClasses() {
         return classes;
     }
+
     public List<Cours> getCours() {
         return cours;
-
-    }
-//pour les dakchi de l'interface
-
-    @Override
-    public void afficher() {
-        System.out.println("Professeur: " + nom + " " + prenom);
     }
 
-    @Override public int getId() {
-        return id;
+    // ---------------------- MÉTHODES EXISTANTES AVEC STREAMS ----------------------
+
+    // Afficher toutes les matières du professeur
+    public void afficherMatieres() {
+        matieres.stream()
+                .forEach(m -> System.out.println(m.getNom()));
     }
-    @Override public String getNom() {
-        return nom;
+
+    // Compter le nombre de matières
+    public long nombreMatieres() {
+        return matieres.stream().count();
     }
-    @Override public String getPrenom() {
-        return prenom;
-    }
-}
+
+    /**
+     * Récupère et affiche les cours d'une matière spécifique pour ce professeur.
+     * @param nomMatiere Le nom de la matière à rechercher (ex : "Java")
+     * @return Une liste des cours correspondant à cette matière
+     */
+    public List<Cours> getCoursParMatiere(String nomMatiere) {
+
+
+        return List.of();
+    }}

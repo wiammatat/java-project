@@ -7,7 +7,7 @@ public class Etudiant implements Personne {
     private Date dateNaissance;
     private Classe classe;
     private List<Note> notes = new ArrayList<>();
-    private List<Absence> absences = new ArrayList<>();
+
 
     public Etudiant(int id, String nom, String prenom, Date dateNaissance) {
         this.id = id;
@@ -20,16 +20,12 @@ public class Etudiant implements Personne {
     public void ajouterNote(Note n) {
         notes.add(n);
     }
-    public void ajouterAbsence(Absence a) {
-        absences.add(a);
-    }
+
 
     public List<Note> getNotes() {
         return notes;
     }
-    public List<Absence> getAbsences() {
-        return absences;
-    }
+
     public Classe getClasse() {
         return classe;
     }
