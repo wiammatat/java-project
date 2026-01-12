@@ -1,0 +1,51 @@
+<!-- ...existing code... -->
+<properties>
+  <!-- ...existing properties... -->
+  <java.version>17</java.version>
+  <javafx.version>20</javafx.version>
+  <!-- set platform: win, linux, mac — change si nécessaire -->
+  <javafx.platform>win</javafx.platform>
+</properties>
+
+<dependencies>
+  <!-- ...existing dependencies... -->
+  <!-- JavaFX controls -->
+  <dependency>
+    <groupId>org.openjfx</groupId>
+    <artifactId>javafx-controls</artifactId>
+    <version>${javafx.version}</version>
+    <classifier>${javafx.platform}</classifier>
+  </dependency>
+  <dependency>
+    <groupId>org.openjfx</groupId>
+    <artifactId>javafx-fxml</artifactId>
+    <version>${javafx.version}</version>
+    <classifier>${javafx.platform}</classifier>
+  </dependency>
+</dependencies>
+
+<build>
+  <!-- ...existing build config... -->
+  <plugins>
+    <!-- ...existing plugins... -->
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <version>3.8.1</version>
+      <configuration>
+        <release>${java.version}</release>
+      </configuration>
+    </plugin>
+
+    <plugin>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-maven-plugin</artifactId>
+      <version>0.0.8</version>
+      <configuration>
+        <mainClass>com.example.App</mainClass>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
+<!-- ...existing code... -->
+

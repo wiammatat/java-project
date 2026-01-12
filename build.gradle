@@ -1,0 +1,60 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+application {
+    // main class (fully qualified)
+    mainClass = 'com.example.app.MainFX'
+    // ensure JavaFX modules are added at runtime
+    applicationDefaultJvmArgs = ["--add-modules=javafx.controls"]
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Explicit JavaFX modules for Windows
+    implementation 'org.openjfx:javafx-base:17.0.2:win'
+    implementation 'org.openjfx:javafx-graphics:17.0.2:win'
+    implementation 'org.openjfx:javafx-controls:17.0.2:win'
+    implementation 'org.openjfx:javafx-fxml:17.0.2:win'
+
+    // PostgreSQL JDBC Driver
+    implementation 'org.postgresql:postgresql:42.7.1'
+
+    // Tests
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+}
+
+sourceSets {
+    main {
+        java {
+            exclude '**/module-info.java'
+        }
+    }
+}
+
+// Configure JavaExec tasks (run/startScripts) to put JavaFX jars on the module-path
+tasks.withType(JavaExec).configureEach {
+    doFirst {
+        def javafxJars = configurations.runtimeClasspath.findAll { it.name.startsWith('javafx') }
+        if (!javafxJars.isEmpty()) {
+            def mp = javafxJars.collect { it.absolutePath }.join(File.pathSeparator)
+            // prepend module-path args so they take effect
+            jvmArgs = ["--module-path", mp, "--add-modules", "javafx.controls"] + (jvmArgs ?: [])
+        }
+    }
+}
+
+// Use JUnit Platform for tests
+test {
+    useJUnitPlatform()
+}
