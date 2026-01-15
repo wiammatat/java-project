@@ -174,7 +174,7 @@ Ce projet est sous licence MIT - voir le fichier `LICENSE` pour plus de détails
 
 ## 👨‍💻 Auteur
 
-**Wiam Matat**Wassim Lazim**
+**Wiam Matat*--*Wassim Lazim**
 - GitHub: [@wiammatat](https://github.com/wiammatat)
 - GitHub: [@Wvssim](https://github.com/Wvssim)
 - Projet: [java-project](https://github.com/wiammatat/java-project)
