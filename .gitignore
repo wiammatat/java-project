@@ -31,3 +31,10 @@ Thumbs.db
 data.ser
 data.ser.bak
 *.tmp
+
+# Large video files (too big for GitHub)
+*.mp4
+*.avi
+*.mov
+*.wmv
+
